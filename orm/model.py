@@ -2,6 +2,10 @@
 
 '''
 
+class Text():
+    def __init__(self):
+        self.id = id
+
 class Book():
     id = None
     name = None
