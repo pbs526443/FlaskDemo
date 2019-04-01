@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>备忘录</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"/>
+		<script src="../static/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.btn_a{
+				float: right;
+				margin-top: 10px;
+			}
+			.div_list{
+				background-color: #333;
+			}
+			.div_back{
+				background-color: #f9f9f9;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h1 style="text-align: left; color: #b4b5ba;">备忘录</h1>
+					</div>
+					<div class="col-md-6">
+						{% if name %}
+							<a href="#" class="btn btn-primary" style="float: right; margin-top: 10px;"> <h4> 欢迎到来:{{name}}</h4></a>
+						{% else %}
+							<a href="/logind" class="btn btn-danger">登录</a>
+							<a href="regist" class="btn btn-primary">注册</a>
+						{% endif%}
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="div_list">
+			<div class="container div_back" style="margin-top: 70px;">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="list-group">
+							{% if infoarry%}
+								{% for info in infoarry %}
+								<div class="panel panel-default panel-info">
+									<div class="panel-heading"></div>
+									<li class="list-group-item">
+										<a href="/detall/{{info[0]}}" class="btn btn_b">
+											<span><h4>标题:{{info[1]}}</h4></span>
+										</a>
+										<a href="/deletememor/{{info[0]}}" class="btn btn-danger btn_a">删除</a>
+										<a href="/updatememor/{{info[0]}}" class="btn btn-primary btn_a" style="margin-right: 3px;">修改</a> 
+									</li>
+								</div>
+								{% endfor%}
+							{% else %}
+								<li class="list-group-item">
+									<a href="#" class="btn btn_b">
+										<span><h4>你还没有添加项目呢</h4></span>
+									</a>
+								</li>
+							{% endif%}
+						</ul>
+						<a href="/" class="btn btn-danger" style="float: right;">返回</a>
+						<a href="/insertmemor" class="btn btn-primary" style="float: left;">添加</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
